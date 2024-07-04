@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-    import { getHomeList } from './tmdbService.ts';
+    import { getHomeList } from '../services/tmdbService.ts';
   
     let homeList: any[] = [];
   
@@ -16,4 +16,3 @@
      
     {/each}
   </div>
-  

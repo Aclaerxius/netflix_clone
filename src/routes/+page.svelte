@@ -1,6 +1,6 @@
 <script>
 import MovieCarousel from '../lib/components/MovieCarousel.svelte';
-import {options} from '../lib/components/fetch.ts';
+import {options} from '../lib/services/fetch.ts';
  export let homeList;
 </script>
 
