@@ -1,6 +1,7 @@
 <script>
-import MovieCarousel from './MovieCarousel.svelte';
-import {options} from './fetch.ts';
+import MovieCarousel from '../lib/components/MovieCarousel.svelte';
+import {options} from '../lib/components/fetch.ts';
+ export let homeList;
 </script>
 
 <svelte:head>
@@ -27,6 +28,7 @@ import {options} from './fetch.ts';
 	</div>
 </sectionHero>
 
+<MovieCarousel {homeList} />
 
 <sectionNewOnNetflix class="z-2" style="margin-top: -100px">
 	<h2>New on Netflix</h2>
