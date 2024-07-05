@@ -90,7 +90,7 @@ export async function getMovieOrSerieInfo(
         info = await dataFetch(`/tv/${id}?api_key=${API_KEY}`);
         break;
       default:
-        info = null;
+        info = {};
         break;
     }
   }

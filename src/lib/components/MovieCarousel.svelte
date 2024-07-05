@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-    import { getHomeList } from '../services/tmdbService.ts';
+    import { getHomeList } from '$lib/services/tmdbService.ts';
   
     let homeList: any[] = [];
   

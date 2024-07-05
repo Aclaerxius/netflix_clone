@@ -1,6 +1,6 @@
 <script>
-	import netflixLogo from '../lib/images/netflix_logo.png';
-	import userNetflix from '../lib/images/user_netflix.jpg';
+	import netflixLogo from '$lib/images/netflix_logo.png';
+	import userNetflix from '$lib/images/user_netflix.jpg';
 	import { onMount, onDestroy } from 'svelte';
 
 	let isScrolled = false;
