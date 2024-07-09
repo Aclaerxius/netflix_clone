@@ -1,7 +1,7 @@
 const API_BASE_URL = "https://api.themoviedb.org/3";
 const API_KEY = import.meta.env.VITE_TMDB_KEY;
 
-interface MovieOrTvInfo {
+interface TitleInfo {
   original_title: string;
   original_language: string;
   overview: string;
@@ -12,74 +12,26 @@ interface MovieOrTvInfo {
   title: string;
 }
 
-const dataFetch = async (endpoint: string): Promise<any> => {
+const dataFetch = async (endpoint: string): Promise<TitleInfo> => {
   const req = await fetch(`${API_BASE_URL}${endpoint}`);
   const json = await req.json();
   return json;
 };
 
-export async function getHomeList(): Promise<any[]> {
-  return [
-    {
-      slug: "originals",
-      title: "Netflix Originals",
-      items: await dataFetch(
-        `/discover/tv?with_networks=213&api_key=${API_KEY}`
-      ),
-    },
-    {
-      slug: "trending",
-      title: "Suggestions for You",
-      items: await dataFetch(`/trending/all/week?api_key=${API_KEY}`),
-    },
-    {
-      slug: "toprated",
-      title: "Top Rated",
-      items: await dataFetch(`/movie/top_rated?api_key=${API_KEY}`),
-    },
-    {
-      slug: "action",
-      title: "Action",
-      items: await dataFetch(
-        `/discover/movie?with_genres=28&api_key=${API_KEY}`
-      ),
-    },
-    {
-      slug: "comedy",
-      title: "Comedy",
-      items: await dataFetch(
-        `/discover/movie?with_genres=35&api_key=${API_KEY}`
-      ),
-    },
-    {
-      slug: "horror",
-      title: "Horror",
-      items: await dataFetch(
-        `/discover/movie?with_genres=27&api_key=${API_KEY}`
-      ),
-    },
-    {
-      slug: "romance",
-      title: "Romance",
-      items: await dataFetch(
-        `/discover/movie?with_genres=10749&api_key=${API_KEY}`
-      ),
-    },
-    {
-      slug: "documentary",
-      title: "Documentary",
-      items: await dataFetch(
-        `/discover/movie?with_genres=99&api_key=${API_KEY}`
-      ),
-    },
-  ];
-}
-
-export async function getMovieOrSerieInfo(
+export async function getTitleInfo(
   id: string | undefined,
   type: string
-): Promise<any> {
-  let info = {};
+): Promise<TitleInfo> {
+  let info: TitleInfo = {
+    original_title: "",
+    original_language: "",
+    overview: "",
+    genres: [],
+    backdrop_path: "",
+    poster_path: "",
+    id: 0,
+    title: "",
+  };
 
   if (id) {
     switch (type) {
@@ -90,10 +42,41 @@ export async function getMovieOrSerieInfo(
         info = await dataFetch(`/tv/${id}?api_key=${API_KEY}`);
         break;
       default:
-        info = {};
+        info = {
+          original_title: "",
+          original_language: "",
+          overview: "",
+          genres: [],
+          backdrop_path: "",
+          poster_path: "",
+          id: 0,
+          title: "",
+        };
         break;
     }
   }
 
-  return info;
+  if (
+    info.original_title &&
+    info.original_language &&
+    info.overview &&
+    info.genres &&
+    info.backdrop_path &&
+    info.poster_path &&
+    info.id &&
+    info.title
+  ) {
+    return info;
+  } else {
+    return {
+      original_title: "",
+      original_language: "",
+      overview: "",
+      genres: [],
+      backdrop_path: "",
+      poster_path: "",
+      id: 0,
+      title: "",
+    };
+  }
 }
