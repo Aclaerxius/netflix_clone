@@ -5,9 +5,9 @@
   // console.log(data);
 </script>
 
-<div class="w-full carousel y-2">
+<div class="w-full h-auto carousel relative overflow-visible y-2">
   {#each titles as item}
-    <div class="carousel-item px-px">
+    <div class="carousel-item px-px transition ease-in-out delay-150 hover:scale-150 duration-300 z-0 hover:z-50">
       <img 
         class="object-fit w-20 h-full "
         src={`https://image.tmdb.org/t/p/w500${item.backdrop_path}`}
