@@ -1,7 +1,5 @@
-import { request } from "http";
-
 const API_BASE_URL = "https://api.themoviedb.org/3";
-const API_KEY = import.meta.env.VITE_TMDB_KEY;
+const API_KEY = "?api_key=27403c69ab68ec0bb43384ee0809603e";
 
 export interface TitleInfo {
   original_name: string;
@@ -23,8 +21,8 @@ export class RequestService {
     this.baseUrl = baseUrl;
   }
 
-  public async getDiscoverTV(): Promise<TitleInfo[]> {
-    let url = `${this.baseUrl}/discover/tv?api_key=27403c69ab68ec0bb43384ee0809603e`;
+  public async getNetflixOriginals(): Promise<TitleInfo[]> {
+    const url = `${this.baseUrl}/discover/tv?with_networks=213&api_key=27403c69ab68ec0bb43384ee0809603e`;
 
     if (this.requests[url]) {
       console.log("cache hit");
@@ -32,6 +30,96 @@ export class RequestService {
     }
 
     // https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/URLSearchParams
+
+    console.log("cache miss");
+    const response = await fetch(url, { method: "GET" });
+
+    const json = (await response.json())["results"] as TitleInfo[];
+
+    this.requests[url] = json;
+
+    return json;
+  }
+
+  public async getTopRated(): Promise<TitleInfo[]> {
+    const url = `${this.baseUrl}/movie/top_rated?api_key=27403c69ab68ec0bb43384ee0809603e`;
+
+    if (this.requests[url]) {
+      console.log("cache hit");
+      return this.requests[url];
+    }
+
+    console.log("cache miss");
+    const response = await fetch(url, { method: "GET" });
+
+    const json = (await response.json())["results"] as TitleInfo[];
+
+    this.requests[url] = json;
+
+    return json;
+  }
+
+  public async getActionMovies(): Promise<TitleInfo[]> {
+    const url = `${this.baseUrl}/discover/movie?with_genres=28&api_key=27403c69ab68ec0bb43384ee0809603e`;
+
+    if (this.requests[url]) {
+      console.log("cache hit");
+      return this.requests[url];
+    }
+
+    console.log("cache miss");
+    const response = await fetch(url, { method: "GET" });
+
+    const json = (await response.json())["results"] as TitleInfo[];
+
+    this.requests[url] = json;
+
+    return json;
+  }
+
+  public async getComedyMovies(): Promise<TitleInfo[]> {
+    const url = `${this.baseUrl}/discover/movie?with_genres=35&api_key=27403c69ab68ec0bb43384ee0809603e`;
+
+    if (this.requests[url]) {
+      console.log("cache hit");
+      return this.requests[url];
+    }
+
+    console.log("cache miss");
+    const response = await fetch(url, { method: "GET" });
+
+    const json = (await response.json())["results"] as TitleInfo[];
+
+    this.requests[url] = json;
+
+    return json;
+  }
+
+  public async getHorrorMovies(): Promise<TitleInfo[]> {
+    const url = `${this.baseUrl}/discover/movie?with_genres=27&api_key=27403c69ab68ec0bb43384ee0809603e`;
+
+    if (this.requests[url]) {
+      console.log("cache hit");
+      return this.requests[url];
+    }
+
+    console.log("cache miss");
+    const response = await fetch(url, { method: "GET" });
+
+    const json = (await response.json())["results"] as TitleInfo[];
+
+    this.requests[url] = json;
+
+    return json;
+  }
+
+  public async getRomanceMovies(): Promise<TitleInfo[]> {
+    const url = `${this.baseUrl}/discover/movie?with_genres=10749&api_key=27403c69ab68ec0bb43384ee0809603e`;
+
+    if (this.requests[url]) {
+      console.log("cache hit");
+      return this.requests[url];
+    }
 
     console.log("cache miss");
     const response = await fetch(url, { method: "GET" });

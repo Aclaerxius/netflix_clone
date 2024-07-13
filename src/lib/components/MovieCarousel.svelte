@@ -5,12 +5,12 @@
   // console.log(data);
 </script>
 
-<div class="w-full h-96 bg-white carousel rounded-box py-2 px-1">
+<div class="w-full carousel y-2">
   {#each titles as item}
-    <div class="carousel-item h-full rounded-box px-1">
-      <img
-        class="h-full w-72 object-cover rounded-box"
-        src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+    <div class="carousel-item px-px">
+      <img 
+        class="object-fit w-20 h-full "
+        src={`https://image.tmdb.org/t/p/w500${item.backdrop_path}`}
         alt={item.original_name}
       />
     </div>
