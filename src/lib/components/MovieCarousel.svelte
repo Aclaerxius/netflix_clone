@@ -2,14 +2,13 @@
   import type { TitleInfo } from "$lib/services/tmdbService";
 
   export let titles: TitleInfo[];
-  // console.log(data);
 </script>
 
-<div class="w-full h-auto carousel relative overflow-visible y-2">
+<div class="carousel left-10 h-40 w-full overflow-">
   {#each titles as item}
-    <div class="carousel-item px-px transition ease-in-out delay-150 hover:scale-150 duration-300 z-0 hover:z-50">
-      <img 
-        class="object-fit w-20 h-full "
+    <div class="carousel-item left-10 px-1 h-full">
+      <img
+        class="w-fit h-full rounded"
         src={`https://image.tmdb.org/t/p/w500${item.backdrop_path}`}
         alt={item.original_name}
       />

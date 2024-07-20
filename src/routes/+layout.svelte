@@ -1,11 +1,8 @@
 <script>
-  import Header from "../lib/components/Header.svelte";
   import "./styles.css";
 </script>
 
 <div>
-  <Header />
-
   <main>
     <slot />
   </main>
