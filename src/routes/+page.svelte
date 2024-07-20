@@ -1,10 +1,5 @@
 <script lang="ts">
   import Header from "../lib/components/Header.svelte";
-  import MovieCarousel from "$lib/components/MovieCarousel.svelte";
-  import FeaturedBilboard from "$lib/components/FeaturedBilboard.svelte";
-  import type { PageData } from "./$types";
-
-  export let data: PageData;
 </script>
 
 <svelte:head>
@@ -12,21 +7,21 @@
   <meta name="description" content="Netflix clone" />
 </svelte:head>
 
-<div class="flex flex-col">
-  <Header />
-  <FeaturedBilboard title={data.titlesOriginals[0]} />
-  <div class="-top-10 z-20">
-    <h2 class="px-8">Netflix Originals</h2>
-    <MovieCarousel titles={data.titlesOriginals} />
-    <h2 class="px-8">Top Rated</h2>
-    <MovieCarousel titles={data.titlesTopRated} />
-    <h2 class="px-8">Action Movies</h2>
-    <MovieCarousel titles={data.titlesAction} />
-    <h2 class="px-8">Comedy Movies</h2>
-    <MovieCarousel titles={data.titlesComedy} />
-    <h2 class="px-8">Horror Movies</h2>
-    <MovieCarousel titles={data.titlesHorror} />
-    <h2 class="px-8">Romance Movies</h2>
-    <MovieCarousel titles={data.titlesRomance} />
-  </div>
+<Header />
+
+<div class="container mx-auto">
+  <h1 class="text-4xl font-bold text-white">Welcome to Netflix!</h1>
+  <p class="mt-4 text-gray-600">
+    Discover the latest movies, TV shows, and more.
+  </p>
+  <img
+    class="w-full"
+    src="https://blogcdn.gmass.co/blog/wp-content/uploads/2020/12/Featured-image-what-is-an-email-header-43kb.png"
+    alt=""
+  />
+  <button
+    class="mt-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+  >
+    Sign In
+  </button>
 </div>
