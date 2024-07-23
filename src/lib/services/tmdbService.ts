@@ -1,5 +1,5 @@
 const API_BASE_URL = "https://api.themoviedb.org/3";
-const API_KEY = "?api_key=27403c69ab68ec0bb43384ee0809603e";
+const API_KEY = "api_key=27403c69ab68ec0bb43384ee0809603e";
 
 export interface TitleInfo {
   original_name: string;
@@ -22,7 +22,7 @@ export class RequestService {
   }
 
   public async getNetflixOriginals(): Promise<TitleInfo[]> {
-    const url = `${this.baseUrl}/discover/tv?with_networks=213&api_key=27403c69ab68ec0bb43384ee0809603e`;
+    const url = `${this.baseUrl}/discover/tv?with_networks=213&${API_KEY}`;
 
     if (this.requests[url]) {
       console.log("cache hit");
@@ -42,7 +42,7 @@ export class RequestService {
   }
 
   public async getTopRated(): Promise<TitleInfo[]> {
-    const url = `${this.baseUrl}/movie/top_rated?api_key=27403c69ab68ec0bb43384ee0809603e`;
+    const url = `${this.baseUrl}/movie/top_rated?${API_KEY}`;
 
     if (this.requests[url]) {
       console.log("cache hit");
@@ -60,7 +60,7 @@ export class RequestService {
   }
 
   public async getActionMovies(): Promise<TitleInfo[]> {
-    const url = `${this.baseUrl}/discover/movie?with_genres=28&api_key=27403c69ab68ec0bb43384ee0809603e`;
+    const url = `${this.baseUrl}/discover/movie?with_genres=28&${API_KEY}`;
 
     if (this.requests[url]) {
       console.log("cache hit");
@@ -78,7 +78,7 @@ export class RequestService {
   }
 
   public async getComedyMovies(): Promise<TitleInfo[]> {
-    const url = `${this.baseUrl}/discover/movie?with_genres=35&api_key=27403c69ab68ec0bb43384ee0809603e`;
+    const url = `${this.baseUrl}/discover/movie?with_genres=35&${API_KEY}`;
 
     if (this.requests[url]) {
       console.log("cache hit");
@@ -96,7 +96,7 @@ export class RequestService {
   }
 
   public async getHorrorMovies(): Promise<TitleInfo[]> {
-    const url = `${this.baseUrl}/discover/movie?with_genres=27&api_key=27403c69ab68ec0bb43384ee0809603e`;
+    const url = `${this.baseUrl}/discover/movie?with_genres=27&${API_KEY}`;
 
     if (this.requests[url]) {
       console.log("cache hit");
@@ -114,7 +114,7 @@ export class RequestService {
   }
 
   public async getRomanceMovies(): Promise<TitleInfo[]> {
-    const url = `${this.baseUrl}/discover/movie?with_genres=10749&api_key=27403c69ab68ec0bb43384ee0809603e`;
+    const url = `${this.baseUrl}/discover/movie?with_genres=10749&${API_KEY}`;
 
     if (this.requests[url]) {
       console.log("cache hit");

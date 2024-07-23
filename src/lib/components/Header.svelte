@@ -20,7 +20,7 @@
 </script>
 
 <header
-  class="relative w-full top-0 z-40 flex justify-between items-center py-4 px-4 bg-gradient-to-b from-black to-transparent {isScrolled
+  class="sticky w-full top-0 z-40 flex justify-between items-center py-4 px-4 bg-gradient-to-b from-black to-transparent {isScrolled
     ? 'bg-black bg-opacity-90 transition ease-in-out duration-500'
     : 'bg-transparent'}"
 >

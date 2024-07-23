@@ -1,7 +1,7 @@
-import { type TitleInfo, requestService } from "$lib/services/tmdbService";
+import { requestService } from "$lib/services/tmdbService";
 import type { PageServerLoad } from "./$types";
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load: PageServerLoad = async ({ params: RouteParams }) => {
   const titlesOriginals = await requestService.getNetflixOriginals();
   const titlesTopRated = await requestService.getTopRated();
   const titlesAction = await requestService.getActionMovies();

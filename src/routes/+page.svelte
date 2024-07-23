@@ -1,5 +1,11 @@
 <script lang="ts">
-  import Header from "../lib/components/Header.svelte";
+  import Header from "$lib/components/Header.svelte";
+  import MovieCarousel from "$lib/components/MovieCarousel.svelte";
+  import FeaturedBilboard from "$lib/components/FeaturedBilboard.svelte";
+
+  import type { PageData } from "./$types";
+
+  export let data: PageData;
 </script>
 
 <svelte:head>
@@ -10,18 +16,37 @@
 <Header />
 
 <div class="container mx-auto">
-  <h1 class="text-4xl font-bold text-white">Welcome to Netflix!</h1>
-  <p class="mt-4 text-gray-600">
-    Discover the latest movies, TV shows, and more.
-  </p>
-  <img
-    class="w-full"
-    src="https://blogcdn.gmass.co/blog/wp-content/uploads/2020/12/Featured-image-what-is-an-email-header-43kb.png"
-    alt=""
-  />
-  <button
-    class="mt-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-  >
-    Sign In
-  </button>
+  <div class="relative -top-40 mt-20 text-lg font-regular">
+    <FeaturedBilboard title={data.titlesOriginals[0]} />
+
+    <div class="mb-5">
+      <h2 class="mb-2">Netflix Original</h2>
+      <MovieCarousel titles={data.titlesOriginals} />
+    </div>
+
+    <div class="mb-5">
+      <h2 class="mb-2">Top Rated</h2>
+      <MovieCarousel titles={data.titlesTopRated} />
+    </div>
+
+    <div class="mb-5">
+      <h2 class="mb-2">Action</h2>
+      <MovieCarousel titles={data.titlesAction} />
+    </div>
+
+    <div class="mb-5">
+      <h2 class="mb-2">Comedy</h2>
+      <MovieCarousel titles={data.titlesComedy} />
+    </div>
+
+    <div class="mb-5">
+      <h2 class="mb-2">Horror</h2>
+      <MovieCarousel titles={data.titlesHorror} />
+    </div>
+
+    <div class="mb-5">
+      <h2 class="mb-2">Romance</h2>
+      <MovieCarousel titles={data.titlesRomance} />
+    </div>
+  </div>
 </div>
