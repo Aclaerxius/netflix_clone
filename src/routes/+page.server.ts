@@ -1,20 +1,20 @@
 import { requestService } from "$lib/services/tmdbService";
 import type { PageServerLoad } from "./$types";
 
-export const load: PageServerLoad = async ({ params: RouteParams }) => {
-  const titlesOriginals = await requestService.getNetflixOriginals();
-  const titlesTopRated = await requestService.getTopRated();
-  const titlesAction = await requestService.getActionMovies();
-  const titlesComedy = await requestService.getComedyMovies();
-  const titlesHorror = await requestService.getHorrorMovies();
-  const titlesRomance = await requestService.getRomanceMovies();
+export const load: PageServerLoad = async () => {
+  const titleOriginals = await requestService.getNetflixOriginals();
+  const titleTopRated = await requestService.getTopRated();
+  const titleAction = await requestService.getActionMovies();
+  const titleComedy = await requestService.getComedyMovies();
+  const titleHorror = await requestService.getHorrorMovies();
+  const titleRomance = await requestService.getRomanceMovies();
 
   return {
-    titlesOriginals: titlesOriginals,
-    titlesTopRated: titlesTopRated,
-    titlesAction: titlesAction,
-    titlesComedy: titlesComedy,
-    titlesHorror: titlesHorror,
-    titlesRomance: titlesRomance,
+    titleOriginals: titleOriginals,
+    titleTopRated: titleTopRated,
+    titleAction: titleAction,
+    titleComedy: titleComedy,
+    titleHorror: titleHorror,
+    titleRomance: titleRomance,
   };
 };

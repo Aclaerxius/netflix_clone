@@ -25,13 +25,11 @@ export class RequestService {
     const url = `${this.baseUrl}/discover/tv?with_networks=213&${API_KEY}`;
 
     if (this.requests[url]) {
-      console.log("cache hit");
       return this.requests[url];
     }
 
     // https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/URLSearchParams
 
-    console.log("cache miss");
     const response = await fetch(url, { method: "GET" });
 
     const json = (await response.json())["results"] as TitleInfo[];
@@ -45,11 +43,9 @@ export class RequestService {
     const url = `${this.baseUrl}/movie/top_rated?${API_KEY}`;
 
     if (this.requests[url]) {
-      console.log("cache hit");
       return this.requests[url];
     }
 
-    console.log("cache miss");
     const response = await fetch(url, { method: "GET" });
 
     const json = (await response.json())["results"] as TitleInfo[];
@@ -63,11 +59,9 @@ export class RequestService {
     const url = `${this.baseUrl}/discover/movie?with_genres=28&${API_KEY}`;
 
     if (this.requests[url]) {
-      console.log("cache hit");
       return this.requests[url];
     }
 
-    console.log("cache miss");
     const response = await fetch(url, { method: "GET" });
 
     const json = (await response.json())["results"] as TitleInfo[];
@@ -81,11 +75,9 @@ export class RequestService {
     const url = `${this.baseUrl}/discover/movie?with_genres=35&${API_KEY}`;
 
     if (this.requests[url]) {
-      console.log("cache hit");
       return this.requests[url];
     }
 
-    console.log("cache miss");
     const response = await fetch(url, { method: "GET" });
 
     const json = (await response.json())["results"] as TitleInfo[];
@@ -99,11 +91,9 @@ export class RequestService {
     const url = `${this.baseUrl}/discover/movie?with_genres=27&${API_KEY}`;
 
     if (this.requests[url]) {
-      console.log("cache hit");
       return this.requests[url];
     }
 
-    console.log("cache miss");
     const response = await fetch(url, { method: "GET" });
 
     const json = (await response.json())["results"] as TitleInfo[];
@@ -117,11 +107,9 @@ export class RequestService {
     const url = `${this.baseUrl}/discover/movie?with_genres=10749&${API_KEY}`;
 
     if (this.requests[url]) {
-      console.log("cache hit");
       return this.requests[url];
     }
 
-    console.log("cache miss");
     const response = await fetch(url, { method: "GET" });
 
     const json = (await response.json())["results"] as TitleInfo[];

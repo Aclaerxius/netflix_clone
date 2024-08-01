@@ -14,37 +14,34 @@
 
 <div class="container">
   <div class="relative text-lg font-regular">
-    <FeaturedBilboard title={data.titlesOriginals[0]} />
-
-    <div class="relative -top-40 overflow-hidden">
+    <FeaturedBilboard title={data.titleOriginals[0]} />
+    <!-- Carousels -->
+    <div class="relative bottom-0 -mt-40 overflow-hidden">
       <div class="mb-5">
-        <h2 class="ml-20 mb-2">Netflix Original</h2>
-        <MovieCarousel titles={data.titlesOriginals} />
+        <MovieCarousel
+          category_name="Netflix Original"
+          title={data.titleOriginals}
+        />
       </div>
 
       <div class="mb-5">
-        <h2 class="ml-20 mb-2">Top Rated</h2>
-        <MovieCarousel titles={data.titlesTopRated} />
+        <MovieCarousel category_name="Top Rated" title={data.titleTopRated} />
       </div>
 
       <div class="mb-5">
-        <h2 class="ml-20 mb-2">Action</h2>
-        <MovieCarousel titles={data.titlesAction} />
+        <MovieCarousel category_name="Action" title={data.titleAction} />
       </div>
 
       <div class="mb-5">
-        <h2 class="ml-20 mb-2">Comedy</h2>
-        <MovieCarousel titles={data.titlesComedy} />
+        <MovieCarousel category_name="Comedy" title={data.titleComedy} />
       </div>
 
       <div class="mb-5">
-        <h2 class="ml-20 mb-2">Horror</h2>
-        <MovieCarousel titles={data.titlesHorror} />
+        <MovieCarousel category_name="Horror" title={data.titleHorror} />
       </div>
 
       <div class="mb-5">
-        <h2 class="ml-20 mb-2">Romance</h2>
-        <MovieCarousel titles={data.titlesRomance} />
+        <MovieCarousel category_name="Romance" title={data.titleRomance} />
       </div>
     </div>
   </div>
