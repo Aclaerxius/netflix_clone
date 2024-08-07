@@ -1,23 +1,34 @@
 <script lang="ts">
   import type { TitleInfo } from "$lib/services/tmdbService";
-  import Modal from "./Modal.svelte"; // Ensure the path matches your project structure
-
-  export let title: TitleInfo[];
   export let category_name: string = "";
   export let category_link: string = "";
   export let category_explore_all: string = "Explore All";
+  export let titles: TitleInfo[];
 
-  let showModal = false;
-  let hoveredItem = false;
+  function handleMouseEnter(event: MouseEvent, item: TitleInfo) {
+    const target = event.currentTarget as HTMLElement;
+    const rect = target.getBoundingClientRect();
 
-  function handleMouseEnter(item) {
-    hoveredItem = item;
-    showModal = true;
+    const coordsAndSize = {
+      x: rect.left,
+      y: rect.top,
+      width: rect.width,
+      height: rect.height,
+      imageUrl: `https://image.tmdb.org/t/p/w500${item.backdrop_path}`,
+      title: item.original_name,
+    };
+
+    openModal(coordsAndSize);
   }
 
-  function handleMouseLeave() {
-    showModal = false;
-  }
+  export let openModal: (coordsAndSize: {
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+    imageUrl: string;
+    title: string;
+  }) => void;
 </script>
 
 <div class="relative group">
@@ -35,11 +46,12 @@
   >
 </div>
 <div class="carousel h-36 w-full overflow-">
-  {#each title as item}
+  {#each titles as item}
     <div
       class="carousel-item left-10 px-0.5 h-full"
-      on:mouseenter={() => handleMouseEnter(item)}
-      on:mouseleave={handleMouseLeave}
+      on:mouseenter={(event) => handleMouseEnter(event, item)}
+      aria-label={item.original_name}
+      aria-hidden="true"
     >
       <img
         class="w-fit h-full rounded"
@@ -49,9 +61,3 @@
     </div>
   {/each}
 </div>
-
-<Modal
-  isOpen={showModal}
-  title={hoveredItem?.original_name}
-  genres={hoveredItem?.genre_ids}
-/>
