@@ -1,7 +1,17 @@
 <script lang="ts">
   import type { TitleInfo } from "$lib/services/tmdbService";
+  import FeaturedModal from "$lib/components/FeaturedModal.svelte";
+  import { writable } from "svelte/store";
 
   export let title: TitleInfo;
+  const isOpen = writable(false);
+
+  function openModal() {
+    $isOpen = true;
+  }
+  function handleCloseModal() {
+    $isOpen = false;
+  }
 </script>
 
 {#if title}
@@ -41,7 +51,37 @@
             ></path></svg
           >&nbsp; Play</button
         >
+        <button
+          on:click={openModal}
+          class="rounded overflow-hidden justify-center inline-flex px-7 py-2 cursor-pointer font-medium text-white text-lg bg-gray-500/60 hover:bg-gray-500/40 z-10"
+        >
+          <div class="flex items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              role="img"
+              data-icon="CircleIStandard"
+              aria-hidden="true"
+              ><path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2ZM0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12ZM13 10V18H11V10H13ZM12 8.5C12.8284 8.5 13.5 7.82843 13.5 7C13.5 6.17157 12.8284 5.5 12 5.5C11.1716 5.5 10.5 6.17157 10.5 7C10.5 7.82843 11.1716 8.5 12 8.5Z"
+                fill="currentColor"
+              ></path></svg
+            >
+          </div>
+          &nbsp; More info</button
+        >
       </div>
     </div>
   </div>
 {/if}
+
+<FeaturedModal
+  bind:isOpen={$isOpen}
+  posterPath={title.backdrop_path}
+  on:closeModal={handleCloseModal}
+/>

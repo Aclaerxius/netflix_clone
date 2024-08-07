@@ -2,7 +2,6 @@
   import MovieCarousel from "$lib/components/MovieCarousel.svelte";
   import Modal from "$lib/components/Modal.svelte";
   import FeaturedBilboard from "$lib/components/FeaturedBilboard.svelte";
-
   import type { TitleInfo } from "$lib/services/tmdbService";
   import type { PageData } from "./$types";
 
@@ -29,17 +28,17 @@
     modalWidth = coordsAndSize.width;
     modalHeight = coordsAndSize.height;
     selectedTitle = {
-      original_name: coordsAndSize.title, // Using title as original_name
-      original_language: "en", // Default language
-      overview: "No overview available.", // Placeholder overview
-      genres: ["Unknown"], // Placeholder genre
+      original_name: coordsAndSize.title,
+      original_language: "en",
+      overview: "No overview available.",
+      genres: ["Unknown"],
       backdrop_path: coordsAndSize.imageUrl.replace(
         "https://image.tmdb.org/t/p/w500",
         ""
-      ), // Extracted from imageUrl
-      poster_path: "", // No poster path provided, using empty string as placeholder
-      id: 0, // Assuming id is a number, using 0 as placeholder
-      title: coordsAndSize.title, // Using title again as it fits both original_name and title fields
+      ),
+      poster_path: "",
+      id: 0,
+      title: coordsAndSize.title,
     };
   }
 </script>

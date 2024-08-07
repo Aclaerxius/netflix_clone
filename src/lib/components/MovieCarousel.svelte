@@ -5,10 +5,9 @@
   export let category_explore_all: string = "Explore All";
   export let titles: TitleInfo[];
 
-  function handleMouseEnter(event: MouseEvent, item: TitleInfo) {
+  function handleMouseEnter(event: MouseEvent | FocusEvent, item: TitleInfo) {
     const target = event.currentTarget as HTMLElement;
     const rect = target.getBoundingClientRect();
-
     const coordsAndSize = {
       x: rect.left,
       y: rect.top,
@@ -17,7 +16,6 @@
       imageUrl: `https://image.tmdb.org/t/p/w500${item.backdrop_path}`,
       title: item.original_name,
     };
-
     openModal(coordsAndSize);
   }
 
@@ -49,7 +47,8 @@
   {#each titles as item}
     <div
       class="carousel-item left-10 px-0.5 h-full"
-      on:mouseenter={(event) => handleMouseEnter(event, item)}
+      on:mouseover={(event) => handleMouseEnter(event, item)}
+      on:focus={(event) => handleMouseEnter(event, item)}
       aria-label={item.original_name}
       aria-hidden="true"
     >
