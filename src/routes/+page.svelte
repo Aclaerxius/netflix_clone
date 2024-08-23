@@ -1,6 +1,6 @@
 <script lang="ts">
   import MovieCarousel from "$lib/components/MovieCarousel.svelte";
-  import Modal from "$lib/components/Modal.svelte";
+  import CarouselModal from "$lib/components/CarouselModal.svelte";
   import FeaturedBilboard from "$lib/components/FeaturedBilboard.svelte";
   import type { TitleInfo } from "$lib/services/tmdbService";
   import type { PageData } from "./$types";
@@ -59,16 +59,6 @@
           titles={data.titleOriginals}
           {openModal}
         />
-        {#if isOpen && selectedTitle}
-          <Modal
-            {isOpen}
-            x={modalX}
-            y={modalY}
-            width={modalWidth}
-            height={modalHeight}
-            {selectedTitle}
-          />
-        {/if}
       </div>
 
       <div class="mb-5">
@@ -77,16 +67,6 @@
           titles={data.titleTopRated}
           {openModal}
         />
-        {#if isOpen && selectedTitle}
-          <Modal
-            {isOpen}
-            x={modalX}
-            y={modalY}
-            width={modalWidth}
-            height={modalHeight}
-            {selectedTitle}
-          />
-        {/if}
       </div>
 
       <div class="mb-5">
@@ -95,16 +75,6 @@
           titles={data.titleAction}
           {openModal}
         />
-        {#if isOpen && selectedTitle}
-          <Modal
-            {isOpen}
-            x={modalX}
-            y={modalY}
-            width={modalWidth}
-            height={modalHeight}
-            {selectedTitle}
-          />
-        {/if}
       </div>
 
       <div class="mb-5">
@@ -113,16 +83,6 @@
           titles={data.titleComedy}
           {openModal}
         />
-        {#if isOpen && selectedTitle}
-          <Modal
-            {isOpen}
-            x={modalX}
-            y={modalY}
-            width={modalWidth}
-            height={modalHeight}
-            {selectedTitle}
-          />
-        {/if}
       </div>
 
       <div class="mb-5">
@@ -131,16 +91,6 @@
           titles={data.titleHorror}
           {openModal}
         />
-        {#if isOpen && selectedTitle}
-          <Modal
-            {isOpen}
-            x={modalX}
-            y={modalY}
-            width={modalWidth}
-            height={modalHeight}
-            {selectedTitle}
-          />
-        {/if}
       </div>
 
       <div class="mb-5">
@@ -149,17 +99,17 @@
           titles={data.titleRomance}
           {openModal}
         />
-        {#if isOpen && selectedTitle}
-          <Modal
-            {isOpen}
-            x={modalX}
-            y={modalY}
-            width={modalWidth}
-            height={modalHeight}
-            {selectedTitle}
-          />
-        {/if}
       </div>
     </div>
   </div>
+  {#if isOpen && selectedTitle}
+    <CarouselModal
+      {isOpen}
+      x={modalX}
+      y={modalY}
+      width={modalWidth}
+      height={modalHeight}
+      {selectedTitle}
+    />
+  {/if}
 </div>
